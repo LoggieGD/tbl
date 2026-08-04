@@ -5,6 +5,6 @@ export const demons = [
         creator: "Loggie",
         verifier: "Loggie",
         difficulty: "Extreme Demon",
-        thumbnail: "images/grief.png"
+        thumbnail: "images/griefer.png"
     }
 ];
