@@ -35,7 +35,6 @@
         input {
             width: 80%;
             max-width: 500px;
-
             padding: 12px;
 
             border-radius: 8px;
@@ -50,13 +49,9 @@
 
 
         #list {
-
             max-width: 1000px;
-
             margin: 30px auto;
-
             padding: 0 15px;
-
         }
 
 
@@ -64,11 +59,9 @@
         .level {
 
             display: flex;
-
             align-items: center;
 
             gap: 20px;
-
 
             background: #161b22;
 
@@ -76,9 +69,7 @@
 
             margin-bottom: 15px;
 
-
             border-radius: 12px;
-
 
             transition: .2s;
 
@@ -99,12 +90,9 @@
         .thumbnail {
 
             width: 180px;
-
             height: 100px;
 
-
             object-fit: cover;
-
 
             border-radius: 8px;
 
@@ -194,8 +182,7 @@
 
     <h1>The Bad List</h1>
 
-
-    <input 
+    <input
         id="search"
         placeholder="Search demons..."
     >
@@ -223,28 +210,25 @@ const search = document.getElementById("search");
 
 
 
-
 function renderLevels(levels) {
 
 
-    list.innerHTML = levels.map(level => {
+    list.innerHTML = levels.map(level => `
 
-
-        const thumbnail =
-        `images/${level.name.toLowerCase()}.png`;
-
-
-
-        return `
 
         <div class="level">
 
 
             <img
+
                 class="thumbnail"
-                src="${thumbnail}"
-                alt="${level.name}"
-                onerror="this.src='images/default.png'"
+
+                src="${level.thumbnail}"
+
+                alt="${level.name} thumbnail"
+
+                onerror="this.style.display='none'"
+
             >
 
 
@@ -255,7 +239,7 @@ function renderLevels(levels) {
                 <h2>
 
                     <span class="rank">
-                    #${level.rank}
+                        #${level.rank}
                     </span>
 
                     ${level.name}
@@ -286,10 +270,8 @@ function renderLevels(levels) {
 
         </div>
 
-        `;
 
-
-    }).join("");
+    `).join("");
 
 }
 
