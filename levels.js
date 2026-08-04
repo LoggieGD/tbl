@@ -7,8 +7,7 @@ export const demons = [
         id: "146274666",
         difficulty: "Extreme Demon",
         thumbnail: "images/grief.png",
-        link: "https://google.com",
-        video: "https://www.youtube.com/embed/"
+        link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
 
     {
@@ -19,8 +18,7 @@ export const demons = [
         id: "146282774",
         difficulty: "Extreme Demon",
         thumbnail: "images/amethyst.png",
-        link: "https://google.com",
-        video: "https://www.youtube.com/embed/"
+        link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
 
     {
@@ -31,7 +29,6 @@ export const demons = [
         id: "146283309",
         difficulty: "Extreme Demon",
         thumbnail: "images/society.png",
-        link: "https://google.com",
-        video: "https://www.youtube.com/embed/"
+        link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     }
 ];
