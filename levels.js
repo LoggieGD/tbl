@@ -13,7 +13,7 @@ export const demons = [
     {
         rank: 2,
         name: "Bad Amethyst (LEGACY)",
-        creator: "Loggie",
+        creator: "Idk",
         verifier: "Open Verification",
         id: "146282774",
         difficulty: "Extreme Demon",
