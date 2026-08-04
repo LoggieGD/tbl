@@ -1,9 +1,9 @@
 export const demons = [
     {
         rank: 1,
-        name: "Grief",
-        creator: "Idk",
-        verifier: "To Be Doggie",
+        name: "Bad Grief",
+        creator: "Loggie",
+        verifier: "Loggie",
         difficulty: "Extreme Demon",
         thumbnail: "images/grief.png"
     }
