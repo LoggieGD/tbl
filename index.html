@@ -229,8 +229,9 @@ main {
     display: flex;
     gap: 48px;
     margin-top: 24px;
+    flex-wrap: wrap;
 }
-.stat { text-align: center; }
+.stat { text-align: center; min-width: 80px; }
 .stat label {
     display: block;
     font-size: 12px;
@@ -303,7 +304,7 @@ hr {
 <header>
     <div class="logo">
         <h1>TBL</h1>
-        <span>v1.2</span>
+        <span>v1.3</span>
     </div>
     <nav>
         <a href="#" class="nav-tab active">List</a>
@@ -355,6 +356,10 @@ hr {
                 <label>ID</label>
                 <value id="level-id">—</value>
             </div>
+            <div class="stat">
+                <label>Victors</label>
+                <value id="victors">—</value>
+            </div>
         </div>
     </main>
 
@@ -367,7 +372,8 @@ hr {
         <h2>Information</h2>
         <ul style="list-style: disc; padding-left: 20px; margin-bottom: 16px;">
             <li>Levels: <span id="level-count">0</span></li>
-            <li>Version: 1.2</li>
+            <li>Difficulty: Extreme Demon</li>
+            <li>Version: 1.3</li>
         </ul>
         <hr>
         <h2>Credits</h2>
@@ -455,6 +461,7 @@ function selectLevel(lvl, btn) {
     document.getElementById('verifier').textContent = lvl.verifier || "—";
     document.getElementById('difficulty').textContent = lvl.difficulty || "—";
     document.getElementById('level-id').textContent = lvl.id || "—";
+    document.getElementById('victors').textContent = lvl.victors || "None";
 
     // Status comes only from isLegacy
     const statusEl = document.getElementById('status');
@@ -495,7 +502,16 @@ searchEl.addEventListener('input', e => renderList(e.target.value));
 // Start
 renderList();
 if (demons.length > 0) {
-    selectLevel(demons[0], document.querySelector('.level'));
+    // Prefer first verified level, otherwise first overall
+    const firstVerified = demons.find(d => !d.isLegacy) || demons[0];
+    const buttons = document.querySelectorAll('.level');
+    let targetBtn = buttons[0];
+    buttons.forEach(btn => {
+        if (btn.querySelector('.level-name')?.textContent === firstVerified.name) {
+            targetBtn = btn;
+        }
+    });
+    selectLevel(firstVerified, targetBtn);
 }
 </script>
 </body>
