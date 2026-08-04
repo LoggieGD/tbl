@@ -20,7 +20,7 @@ export const demons = [
         difficulty: "Extreme Demon",
         thumbnail: "images/amethyst.png",
         link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-        victors: "None, You Could Be The First.",
+        victors: "Not Verified.",
         isLegacy: true
     },
     {
@@ -31,7 +31,7 @@ export const demons = [
         id: "146283309",
         difficulty: "Extreme Demon",
         thumbnail: "images/society.png",
-        victors: "None, You Could Be The First.",
+        victors: "Not Verified.",
         link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         isLegacy: true
     }
