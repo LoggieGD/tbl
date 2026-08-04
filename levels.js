@@ -14,7 +14,7 @@ export const demons = [
         name: "Bad Amethyst",
         creator: "Loggie",
         verifier: "Open Verification",
-        id: "146282774",
+        id: "146282774 Cpopy",
         difficulty: "Extreme Demon",
         thumbnail: "images/amethyst.png"
     }
