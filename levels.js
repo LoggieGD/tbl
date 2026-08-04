@@ -8,6 +8,7 @@ export const demons = [
         difficulty: "Extreme Demon",
         thumbnail: "images/grief.png",
         link: "https://www.youtube.com/watch?v=4LsdjyJHkEI",
+        victors: "None",
         isLegacy: false
     },
     {
@@ -19,6 +20,7 @@ export const demons = [
         difficulty: "Extreme Demon",
         thumbnail: "images/amethyst.png",
         link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        victors: "None",
         isLegacy: true
     },
     {
@@ -29,6 +31,7 @@ export const demons = [
         id: "146283309",
         difficulty: "Extreme Demon",
         thumbnail: "images/society.png",
+        victors: "None",
         link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         isLegacy: true
     }
