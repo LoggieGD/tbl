@@ -1,340 +1,502 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
-    <title>The Bad List</title>
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-
-        body {
-            margin: 0;
-            background: #0b0f14;
-            color: white;
-        }
-
-
-        header {
-            background: #151b22;
-            padding: 25px;
-            text-align: center;
-        }
-
-
-        h1 {
-            font-size: 35px;
-            margin-bottom: 20px;
-        }
-
-
-        input {
-            width: 80%;
-            max-width: 500px;
-            padding: 12px;
-
-            border-radius: 8px;
-            border: none;
-
-            background: #222;
-            color: white;
-
-            font-size: 16px;
-        }
-
-
-
-        #list {
-
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 0 15px;
-
-        }
-
-
-
-        .level {
-
-            display: flex;
-            align-items: center;
-            gap: 20px;
-
-            background: #161b22;
-
-            padding: 15px;
-            margin-bottom: 15px;
-
-            border-radius: 12px;
-
-            transition: .2s;
-
-        }
-
-
-
-        .level:hover {
-
-            transform: scale(1.02);
-
-            background: #202830;
-
-        }
-
-
-
-        .thumbnail {
-
-            width: 180px;
-            height: 100px;
-
-            object-fit: cover;
-
-            border-radius: 8px;
-
-        }
-
-
-
-        .info {
-
-            flex: 1;
-
-        }
-
-
-
-        .info h2 {
-
-            margin: 0;
-            font-size: 25px;
-
-        }
-
-
-
-        .rank {
-
-            color: #ffd700;
-            font-weight: bold;
-
-        }
-
-
-
-        .info p {
-
-            color: #aaa;
-            margin: 6px 0;
-
-        }
-
-
-
-        .difficulty {
-
-            color: #ff4444 !important;
-            font-weight: bold;
-
-        }
-
-
-
-        .id {
-
-            color: #66ccff !important;
-
-        }
-
-
-
-        @media(max-width:600px) {
-
-            .level {
-
-                flex-direction: column;
-                align-items: flex-start;
-
-            }
-
-
-            .thumbnail {
-
-                width: 100%;
-                height: auto;
-
-            }
-
-        }
-
-
-    </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Bad List</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#10151f;
+    color:white;
+    overflow:hidden;
+}
+
+/* Top Bar */
+
+header{
+    height:70px;
+    background:#293d57;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+    border-bottom:2px solid #3e5d87;
+}
+
+header h1{
+    font-size:30px;
+    color:#69b6ff;
+}
+
+header nav{
+    display:flex;
+    gap:25px;
+}
+
+header nav a{
+    color:white;
+    text-decoration:none;
+    transition:.2s;
+}
+
+header nav a:hover{
+    color:#69b6ff;
+}
+
+/* Main Layout */
+
+.container{
+    display:grid;
+    grid-template-columns:320px 1fr 280px;
+    height:calc(100vh - 70px);
+}
+
+/* LEFT */
+
+.sidebar{
+    background:#181f2b;
+    border-right:2px solid #222d40;
+    display:flex;
+    flex-direction:column;
+}
+
+.sidebar input{
+    margin:20px;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#222d40;
+    color:white;
+    font-size:16px;
+}
+
+#level-list{
+    overflow-y:auto;
+    flex:1;
+    padding:15px;
+}
+
+.level-button{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    background:#232d3d;
+    border-radius:10px;
+    margin-bottom:12px;
+    padding:10px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.level-button:hover{
+    background:#33445e;
+}
+
+.level-button.active{
+    background:#3f7ee8;
+}
+
+.level-button img{
+    width:90px;
+    height:55px;
+    object-fit:cover;
+    border-radius:6px;
+}
+
+.level-button h3{
+    font-size:17px;
+}
+
+.level-button p{
+    color:#bbb;
+    font-size:13px;
+}
+
+/* CENTER */
+
+.content{
+    overflow-y:auto;
+    padding:30px;
+}
+
+.hero-image{
+    width:100%;
+    max-height:350px;
+    object-fit:cover;
+    border-radius:12px;
+    border:2px solid #2e415d;
+    margin-bottom:20px;
+}
+
+#level-name{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.stats{
+    background:#181f2b;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:20px;
+}
+
+.stats p{
+    margin:10px 0;
+    color:#ddd;
+    font-size:18px;
+}
+
+.button{
+    display:inline-block;
+    padding:12px 22px;
+    background:#3f7ee8;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+    transition:.2s;
+    margin-bottom:25px;
+}
+
+.button:hover{
+    background:#5a9cff;
+}
+
+.video{
+    background:#181f2b;
+    padding:15px;
+    border-radius:12px;
+}
+
+.video iframe{
+    width:100%;
+    height:450px;
+    border:none;
+    border-radius:10px;
+}
+
+/* RIGHT */
+
+.right{
+    background:#181f2b;
+    border-left:2px solid #222d40;
+    padding:25px;
+    overflow-y:auto;
+}
+
+.right h2{
+    color:#69b6ff;
+    margin-bottom:12px;
+}
+
+.right p{
+    color:#bbb;
+    margin-bottom:15px;
+    line-height:1.5;
+}
+
+.right hr{
+    border:none;
+    border-top:1px solid #2b3648;
+    margin:20px 0;
+}
+
+/* Mobile */
+
+@media(max-width:1000px){
+
+    .container{
+        grid-template-columns:1fr;
+    }
+
+    .sidebar,
+    .right{
+        display:none;
+    }
+
+    .content{
+        padding:20px;
+    }
+
+}
+
+</style>
 </head>
 
-
 <body>
-
 
 <header>
 
     <h1>The Bad List</h1>
 
-    <input
-        id="search"
-        placeholder="Search demons..."
-    >
+    <nav>
+        <a href="#">List</a>
+        <a href="#">Leaderboard</a>
+        <a href="#">Packs</a>
+    </nav>
 
 </header>
 
+<div class="container">
+    <!-- LEFT SIDEBAR -->
+
+<aside class="sidebar">
+
+    <input
+        id="search"
+        type="text"
+        placeholder="Search levels..."
+    >
+
+    <div id="level-list"></div>
+
+</aside>
 
 
-<main id="list"></main>
+
+<!-- CENTER CONTENT -->
+
+<main class="content">
+
+    <img
+        id="level-image"
+        class="hero-image"
+        src=""
+        alt="Level Thumbnail"
+    >
+
+    <h1 id="level-name">
+        Select a Level
+    </h1>
+
+    <div class="stats">
+
+        <p>
+            <strong>Creator:</strong>
+            <span id="creator"></span>
+        </p>
+
+        <p>
+            <strong>Verifier:</strong>
+            <span id="verifier"></span>
+        </p>
+
+        <p>
+            <strong>Level ID:</strong>
+            <span id="level-id"></span>
+        </p>
+
+        <p>
+            <strong>Difficulty:</strong>
+            <span id="difficulty"></span>
+        </p>
+
+    </div>
+
+
+    <a
+        id="level-link"
+        class="button"
+        href="https://google.com"
+        target="_blank"
+    >
+        Open Level
+    </a>
+
+
+    <div class="video">
+
+        <iframe
+            id="level-video"
+            src=""
+            allowfullscreen
+        ></iframe>
+
+    </div>
+
+</main>
 
 
 
+<!-- RIGHT SIDEBAR -->
+
+<aside class="right">
+
+    <h2>Welcome</h2>
+
+    <p>
+        Welcome to <b>The Bad List</b>.
+    </p>
+
+    <p>
+        Click a level from the left sidebar to
+        view its information.
+    </p>
+
+    <hr>
+
+    <h2>Statistics</h2>
+
+    <p>
+        Total Levels:
+        <span id="level-count"></span>
+    </p>
+
+    <p>
+        More features coming soon.
+    </p>
+
+    <hr>
+
+    <h2>Credits</h2>
+
+    <p>
+        Owner: Loggie
+    </p>
+
+    <p>
+        Website by Loggie
+    </p>
+
+</aside>
+
+</div>
 
 <script type="module">
 
-
 import { demons } from "./levels.js";
-
-
-
-const list = document.getElementById("list");
+    const levelList = document.getElementById("level-list");
 
 const search = document.getElementById("search");
 
+const levelImage = document.getElementById("level-image");
+const levelName = document.getElementById("level-name");
+const creator = document.getElementById("creator");
+const verifier = document.getElementById("verifier");
+const levelId = document.getElementById("level-id");
+const difficulty = document.getElementById("difficulty");
+
+const levelLink = document.getElementById("level-link");
+const levelVideo = document.getElementById("level-video");
+
+document.getElementById("level-count").textContent = demons.length;
 
 
 
-function renderLevels(levels) {
+function showLevel(level){
 
+    levelImage.src = level.thumbnail;
 
-    list.innerHTML = levels.map(level => {
+    levelName.textContent =
+        `#${level.rank} ${level.name}`;
 
+    creator.textContent = level.creator;
 
-        return `
+    verifier.textContent = level.verifier;
 
-        <div class="level">
+    levelId.textContent = level.id;
 
+    difficulty.textContent = level.difficulty;
 
-            <img
+levelLink.href = level.link;
 
-                class="thumbnail"
+// Convert a normal YouTube URL into an embed URL
+let embed = level.link;
 
-                src="${level.thumbnail}"
+if (embed.includes("youtube.com/watch?v=")) {
+    embed = embed.replace("watch?v=", "embed/");
+} else if (embed.includes("youtu.be/")) {
+    embed = embed.replace("youtu.be/", "www.youtube.com/embed/");
+}
 
-                alt="${level.name} thumbnail"
-
-                onerror="this.style.display='none'"
-
-            >
-
-
-
-            <div class="info">
-
-
-                <h2>
-
-                    <span class="rank">
-                        #${level.rank}
-                    </span>
-
-                    ${level.name}
-
-                </h2>
-
-
-
-                <p>
-                    Creator: ${level.creator}
-                </p>
-
-
-
-                <p>
-                    Verifier: ${level.verifier}
-                </p>
-
-
-
-                <p class="id">
-                    ID: ${level.id}
-                </p>
-
-
-
-                <p class="difficulty">
-                    ${level.difficulty}
-                </p>
-
-
-            </div>
-
-
-        </div>
-
-
-        `;
-
-
-    }).join("");
+levelVideo.src = embed;
 
 }
 
 
 
+function renderList(levels){
 
+    levelList.innerHTML = "";
 
-search.addEventListener("input", () => {
+    levels.forEach(level=>{
 
+        const card = document.createElement("div");
 
-    const text = search.value.toLowerCase();
+        card.className = "level-button";
 
+        card.innerHTML = `
 
+            <img src="${level.thumbnail}">
 
-    const filtered = demons.filter(level => {
+            <div>
 
+                <h3>#${level.rank}</h3>
 
-        return (
+                <p>${level.name}</p>
 
-            level.name.toLowerCase().includes(text) ||
+            </div>
 
-            level.creator.toLowerCase().includes(text) ||
+        `;
 
-            level.verifier.toLowerCase().includes(text) ||
+        card.onclick = ()=>{
 
-            level.id.toLowerCase().includes(text)
+            document
+                .querySelectorAll(".level-button")
+                .forEach(x=>x.classList.remove("active"));
 
-        );
+            card.classList.add("active");
 
+            showLevel(level);
+
+        };
+
+        levelList.appendChild(card);
 
     });
 
+    if(levels.length>0){
+
+        levelList.firstElementChild.classList.add("active");
+
+        showLevel(levels[0]);
+
+    }
+
+}
 
 
-    renderLevels(filtered);
 
+search.addEventListener("input",()=>{
+
+    const text = search.value.toLowerCase();
+
+    const filtered = demons.filter(level=>
+
+        level.name.toLowerCase().includes(text) ||
+
+        level.creator.toLowerCase().includes(text) ||
+
+        level.verifier.toLowerCase().includes(text) ||
+
+        level.id.includes(text)
+
+    );
+
+    renderList(filtered);
 
 });
 
 
 
-
-
-renderLevels(demons);
-
-
-
-</script>
-
-
-
-</body>
-</html>
+renderList(demons);
