@@ -49,9 +49,11 @@
 
 
         #list {
+
             max-width: 1000px;
             margin: 30px auto;
             padding: 0 15px;
+
         }
 
 
@@ -60,13 +62,11 @@
 
             display: flex;
             align-items: center;
-
             gap: 20px;
 
             background: #161b22;
 
             padding: 15px;
-
             margin-bottom: 15px;
 
             border-radius: 12px;
@@ -111,7 +111,6 @@
         .info h2 {
 
             margin: 0;
-
             font-size: 25px;
 
         }
@@ -121,7 +120,6 @@
         .rank {
 
             color: #ffd700;
-
             font-weight: bold;
 
         }
@@ -131,7 +129,6 @@
         .info p {
 
             color: #aaa;
-
             margin: 6px 0;
 
         }
@@ -141,8 +138,15 @@
         .difficulty {
 
             color: #ff4444 !important;
-
             font-weight: bold;
+
+        }
+
+
+
+        .id {
+
+            color: #66ccff !important;
 
         }
 
@@ -153,7 +157,6 @@
             .level {
 
                 flex-direction: column;
-
                 align-items: flex-start;
 
             }
@@ -162,7 +165,6 @@
             .thumbnail {
 
                 width: 100%;
-
                 height: auto;
 
             }
@@ -213,8 +215,10 @@ const search = document.getElementById("search");
 function renderLevels(levels) {
 
 
-    list.innerHTML = levels.map(level => `
+    list.innerHTML = levels.map(level => {
 
+
+        return `
 
         <div class="level">
 
@@ -260,6 +264,12 @@ function renderLevels(levels) {
 
 
 
+                <p class="id">
+                    ID: ${level.id}
+                </p>
+
+
+
                 <p class="difficulty">
                     ${level.difficulty}
                 </p>
@@ -271,7 +281,10 @@ function renderLevels(levels) {
         </div>
 
 
-    `).join("");
+        `;
+
+
+    }).join("");
 
 }
 
@@ -295,7 +308,9 @@ search.addEventListener("input", () => {
 
             level.creator.toLowerCase().includes(text) ||
 
-            level.verifier.toLowerCase().includes(text)
+            level.verifier.toLowerCase().includes(text) ||
+
+            level.id.toLowerCase().includes(text)
 
         );
 
