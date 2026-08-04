@@ -1,7 +1,7 @@
 export const demons = [
     {
         rank: 1,
-        name: "Bad Grief",
+        name: "Bad Grief (LEGACY)",
         creator: "Loggie",
         verifier: "Loggie",
         id: "146274666",
@@ -11,7 +11,7 @@ export const demons = [
 
     {
         rank: 2,
-        name: "Bad Amethyst",
+        name: "Bad Amethyst (LEGACY)",
         creator: "Loggie",
         verifier: "Open Verification",
         id: "146282774",
