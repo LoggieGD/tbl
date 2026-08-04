@@ -7,9 +7,9 @@ export const demons = [
         id: "146274666",
         difficulty: "Extreme Demon",
         thumbnail: "images/grief.png",
-        link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        isLegacy: true
     },
-
     {
         rank: 2,
         name: "Bad Amethyst (LEGACY)",
@@ -18,9 +18,9 @@ export const demons = [
         id: "146282774",
         difficulty: "Extreme Demon",
         thumbnail: "images/amethyst.png",
-        link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        isLegacy: true
     },
-
     {
         rank: 3,
         name: "Bad Society (LEGACY)",
@@ -29,6 +29,7 @@ export const demons = [
         id: "146283309",
         difficulty: "Extreme Demon",
         thumbnail: "images/society.png",
-        link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        isLegacy: true
     }
 ];
