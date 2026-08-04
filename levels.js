@@ -6,7 +6,9 @@ export const demons = [
         verifier: "Loggie",
         id: "146274666",
         difficulty: "Extreme Demon",
-        thumbnail: "images/grief.png"
+        thumbnail: "images/grief.png",
+        link: "https://google.com",
+        video: "https://www.youtube.com/embed/"
     },
 
     {
@@ -16,16 +18,20 @@ export const demons = [
         verifier: "Open Verification",
         id: "146282774",
         difficulty: "Extreme Demon",
-        thumbnail: "images/amethyst.png"
+        thumbnail: "images/amethyst.png",
+        link: "https://google.com",
+        video: "https://www.youtube.com/embed/"
     },
 
-        {
+    {
         rank: 3,
         name: "Bad Society (LEGACY)",
         creator: "Loggie",
         verifier: "Open Verification",
         id: "146283309",
         difficulty: "Extreme Demon",
-        thumbnail: "images/society.png"
+        thumbnail: "images/society.png",
+        link: "https://google.com",
+        video: "https://www.youtube.com/embed/"
     }
 ];
