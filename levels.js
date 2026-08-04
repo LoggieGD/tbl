@@ -17,5 +17,15 @@ export const demons = [
         id: "146282774",
         difficulty: "Extreme Demon",
         thumbnail: "images/amethyst.png"
+    },
+
+        {
+        rank: 3,
+        name: "Bad Society (LEGACY)",
+        creator: "Loggie",
+        verifier: "Open Verification",
+        id: "146283309",
+        difficulty: "Extreme Demon",
+        thumbnail: "images/society.png"
     }
 ];
