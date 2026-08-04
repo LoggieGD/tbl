@@ -3,500 +3,494 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>The Bad List</title>
-
+<title>TBL v1.0 - The Bad List</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@500;700&display=swap" rel="stylesheet">
 <style>
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
 }
-
-body{
-    background:#10151f;
-    color:white;
-    overflow:hidden;
+:root {
+    --bg: #1c1b1f;
+    --bg-hover: #27262c;
+    --surface: #1f1f24;
+    --primary: #2d3999;
+    --primary-dark: #283593;
+    --on-primary: #ffffff;
+    --text: #ffffff;
+    --text-muted: #cccccc;
+    --accent: #3b50d4;
 }
-
-/* Top Bar */
-
-header{
-    height:70px;
-    background:#293d57;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 30px;
-    border-bottom:2px solid #3e5d87;
+html, body {
+    height: 100%;
+    font-family: 'Lexend Deca', Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
 }
-
-header h1{
-    font-size:30px;
-    color:#69b6ff;
+/* HEADER */
+header {
+    height: 58px;
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    gap: 20px;
+    flex-shrink: 0;
 }
-
-header nav{
-    display:flex;
-    gap:25px;
+.logo {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    min-width: 140px;
 }
-
-header nav a{
-    color:white;
-    text-decoration:none;
-    transition:.2s;
+.logo h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -1px;
 }
-
-header nav a:hover{
-    color:#69b6ff;
+.logo span {
+    color: #c5c5d0;
+    font-size: 14px;
+    font-weight: 500;
 }
-
-/* Main Layout */
-
-.container{
-    display:grid;
-    grid-template-columns:320px 1fr 280px;
-    height:calc(100vh - 70px);
+nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
 }
-
-/* LEFT */
-
-.sidebar{
-    background:#181f2b;
-    border-right:2px solid #222d40;
-    display:flex;
-    flex-direction:column;
+.nav-tab {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 6px 12px 10px;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.15s;
 }
-
-.sidebar input{
-    margin:20px;
-    padding:12px;
-    border:none;
-    border-radius:8px;
-    background:#222d40;
-    color:white;
-    font-size:16px;
+.nav-tab:hover,
+.nav-tab.active {
+    border-bottom-color: white;
 }
-
-#level-list{
-    overflow-y:auto;
-    flex:1;
-    padding:15px;
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
 }
-
-.level-button{
-    display:flex;
-    gap:10px;
-    align-items:center;
-    background:#232d3d;
-    border-radius:10px;
-    margin-bottom:12px;
-    padding:10px;
-    cursor:pointer;
-    transition:.2s;
+.btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background: white;
+    color: var(--primary);
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,50,0.3);
+    transition: transform 0.1s;
+    white-space: nowrap;
 }
-
-.level-button:hover{
-    background:#33445e;
+.btn:hover {
+    transform: translateY(-1px);
 }
-
-.level-button.active{
-    background:#3f7ee8;
+/* LAYOUT */
+.container {
+    display: grid;
+    grid-template-columns: 320px 1fr 300px;
+    height: calc(100vh - 58px);
+    overflow: hidden;
 }
-
-.level-button img{
-    width:90px;
-    height:55px;
-    object-fit:cover;
-    border-radius:6px;
+/* LEFT SIDEBAR */
+.sidebar {
+    background: #18181d;
+    border-right: 1px solid #2c2c35;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
-
-.level-button h3{
-    font-size:17px;
+#search {
+    margin: 14px;
+    padding: 12px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #2c2c35;
+    color: white;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
 }
-
-.level-button p{
-    color:#bbb;
-    font-size:13px;
+#search::placeholder {
+    color: #888;
 }
-
+#search:focus {
+    background: #35353f;
+}
+#level-list {
+    overflow-y: auto;
+    flex: 1;
+    padding-bottom: 20px;
+}
+.level {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background 0.15s;
+    border: none;
+    background: transparent;
+    width: 100%;
+    text-align: left;
+    color: inherit;
+    font-family: inherit;
+}
+.level:hover {
+    background: #303046;
+}
+.level.active {
+    background: var(--accent);
+}
+.rank {
+    width: 36px;
+    text-align: right;
+    font-size: 18px;
+    font-weight: 700;
+    color: #aaa;
+    flex-shrink: 0;
+}
+.level.active .rank {
+    color: white;
+}
+.level-name {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.3;
+}
 /* CENTER */
-
-.content{
-    overflow-y:auto;
-    padding:30px;
+main {
+    padding: 28px 32px;
+    overflow-y: auto;
+    background: #121215;
 }
-
-.hero-image{
-    width:100%;
-    max-height:350px;
-    object-fit:cover;
-    border-radius:12px;
-    border:2px solid #2e415d;
-    margin-bottom:20px;
+.top {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
 }
-
-#level-name{
-    font-size:42px;
-    margin-bottom:20px;
+#thumbnail {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 12px;
+    background: #222;
+    flex-shrink: 0;
+    display: none;
 }
-
-.stats{
-    background:#181f2b;
-    padding:20px;
-    border-radius:12px;
-    margin-bottom:20px;
+#title {
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
 }
-
-.stats p{
-    margin:10px 0;
-    color:#ddd;
-    font-size:18px;
+.info {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    row-gap: 8px;
+    column-gap: 16px;
+    margin: 18px 0 24px;
+    font-size: 15px;
 }
-
-.button{
-    display:inline-block;
-    padding:12px 22px;
-    background:#3f7ee8;
-    color:white;
-    text-decoration:none;
-    border-radius:8px;
-    font-weight:bold;
-    transition:.2s;
-    margin-bottom:25px;
+.info b {
+    color: #aaa;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 13px;
 }
-
-.button:hover{
-    background:#5a9cff;
+.info span {
+    color: #eee;
 }
-
-.video{
-    background:#181f2b;
-    padding:15px;
-    border-radius:12px;
+.video-tabs {
+    display: flex;
+    gap: 28px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 700;
 }
-
-.video iframe{
-    width:100%;
-    height:450px;
-    border:none;
-    border-radius:10px;
+.video-tabs div {
+    padding-bottom: 6px;
+    border-bottom: 3px solid transparent;
+    cursor: default;
+    color: white;
 }
-
-/* RIGHT */
-
-.right{
-    background:#181f2b;
-    border-left:2px solid #222d40;
-    padding:25px;
-    overflow-y:auto;
+.video-tabs .active {
+    border-color: white;
 }
-
-.right h2{
-    color:#69b6ff;
-    margin-bottom:12px;
+.video {
+    width: 100%;
+    max-width: 720px;
+    aspect-ratio: 16/9;
+    background: #0a0a0a;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
 }
-
-.right p{
-    color:#bbb;
-    margin-bottom:15px;
-    line-height:1.5;
+.video iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
 }
-
-.right hr{
-    border:none;
-    border-top:1px solid #2b3648;
-    margin:20px 0;
+.stats-row {
+    display: flex;
+    gap: 48px;
+    margin-top: 24px;
+    max-width: 720px;
 }
-
-/* Mobile */
-
-@media(max-width:1000px){
-
-    .container{
-        grid-template-columns:1fr;
+.stat {
+    text-align: center;
+}
+.stat label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+.stat value {
+    font-size: 22px;
+    font-weight: 700;
+}
+/* RIGHT PANEL */
+.right {
+    background: #18181d;
+    border-left: 1px solid #2c2c35;
+    padding: 24px 20px;
+    overflow-y: auto;
+}
+.right h2 {
+    font-size: 20px;
+    margin-bottom: 14px;
+    font-weight: 700;
+}
+.info-box {
+    background: var(--primary);
+    color: white;
+    padding: 14px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.45;
+    margin-bottom: 24px;
+}
+.info-box a {
+    color: #a8c0ff;
+    font-weight: 700;
+}
+.editors {
+    list-style: none;
+    margin-bottom: 20px;
+}
+.editors li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    font-size: 15px;
+}
+.credits {
+    font-size: 13px;
+    color: #999;
+    margin-top: 16px;
+    line-height: 1.5;
+}
+.right a.req {
+    display: inline-block;
+    margin-top: 12px;
+    color: #6b8cff;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+}
+.right a.req:hover {
+    text-decoration: underline;
+}
+hr {
+    border: none;
+    border-top: 1px solid #2c2c35;
+    margin: 18px 0;
+}
+/* Responsive */
+@media (max-width: 1100px) {
+    .container {
+        grid-template-columns: 280px 1fr;
     }
-
-    .sidebar,
-    .right{
-        display:none;
+    .right {
+        display: none;
     }
-
-    .content{
-        padding:20px;
-    }
-
 }
-
+@media (max-width: 700px) {
+    .container {
+        display: block;
+        height: auto;
+    }
+    .sidebar {
+        height: 280px;
+    }
+    #title {
+        font-size: 28px;
+    }
+    .top {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    header {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px;
+    }
+}
 </style>
 </head>
-
 <body>
-
 <header>
-
-    <h1>The Bad List</h1>
-
+    <div class="logo">
+        <h1>TBL</h1>
+        <span>v1.0</span>
+    </div>
     <nav>
-        <a href="#">List</a>
-        <a href="#">Leaderboard</a>
-        <a href="#">Packs</a>
+        <a href="#" class="nav-tab active">List</a>
+        <div class="nav-actions">
+            <a href="#" class="btn">Logout</a>
+        </div>
     </nav>
-
 </header>
-
 <div class="container">
-    <!-- LEFT SIDEBAR -->
-
-<aside class="sidebar">
-
-    <input
-        id="search"
-        type="text"
-        placeholder="Search levels..."
-    >
-
-    <div id="level-list"></div>
-
-</aside>
-
-
-
-<!-- CENTER CONTENT -->
-
-<main class="content">
-
-    <img
-        id="level-image"
-        class="hero-image"
-        src=""
-        alt="Level Thumbnail"
-    >
-
-    <h1 id="level-name">
-        Select a Level
-    </h1>
-
-    <div class="stats">
-
-        <p>
-            <strong>Creator:</strong>
+    <!-- LEFT -->
+    <aside class="sidebar">
+        <input id="search" type="text" placeholder="Search by level name...">
+        <div id="level-list"></div>
+    </aside>
+    <!-- CENTER -->
+    <main>
+        <div class="top">
+            <img id="thumbnail" src="" alt="Level Thumbnail">
+            <h1 id="title">Select a Level</h1>
+        </div>
+        <div class="info">
+            <b>Creator</b>
             <span id="creator"></span>
-        </p>
-
-        <p>
-            <strong>Verifier:</strong>
+            <b>Verifier</b>
             <span id="verifier"></span>
-        </p>
-
-        <p>
-            <strong>Level ID:</strong>
-            <span id="level-id"></span>
-        </p>
-
-        <p>
-            <strong>Difficulty:</strong>
+            <b>Difficulty</b>
             <span id="difficulty"></span>
-        </p>
-
-    </div>
-
-
-    <a
-        id="level-link"
-        class="button"
-        href="https://google.com"
-        target="_blank"
-    >
-        Open Level
-    </a>
-
-
-    <div class="video">
-
-        <iframe
-            id="level-video"
-            src=""
-            allowfullscreen
-        ></iframe>
-
-    </div>
-
-</main>
-
-
-
-<!-- RIGHT SIDEBAR -->
-
-<aside class="right">
-
-    <h2>Welcome</h2>
-
-    <p>
-        Welcome to <b>The Bad List</b>.
-    </p>
-
-    <p>
-        Click a level from the left sidebar to
-        view its information.
-    </p>
-
-    <hr>
-
-    <h2>Statistics</h2>
-
-    <p>
-        Total Levels:
-        <span id="level-count"></span>
-    </p>
-
-    <p>
-        More features coming soon.
-    </p>
-
-    <hr>
-
-    <h2>Credits</h2>
-
-    <p>
-        Owner: Loggie
-    </p>
-
-    <p>
-        Website by Loggie
-    </p>
-
-</aside>
-
-</div>
-
-<script type="module">
-
-import { demons } from "./levels.js";
-    const levelList = document.getElementById("level-list");
-
-const search = document.getElementById("search");
-
-const levelImage = document.getElementById("level-image");
-const levelName = document.getElementById("level-name");
-const creator = document.getElementById("creator");
-const verifier = document.getElementById("verifier");
-const levelId = document.getElementById("level-id");
-const difficulty = document.getElementById("difficulty");
-
-const levelLink = document.getElementById("level-link");
-const levelVideo = document.getElementById("level-video");
-
-document.getElementById("level-count").textContent = demons.length;
-
-
-
-function showLevel(level){
-
-    levelImage.src = level.thumbnail;
-
-    levelName.textContent =
-        `#${level.rank} ${level.name}`;
-
-    creator.textContent = level.creator;
-
-    verifier.textContent = level.verifier;
-
-    levelId.textContent = level.id;
-
-    difficulty.textContent = level.difficulty;
-
-levelLink.href = level.link;
-
-// Convert a normal YouTube URL into an embed URL
-let embed = level.link;
-
-if (embed.includes("youtube.com/watch?v=")) {
-    embed = embed.replace("watch?v=", "embed/");
-} else if (embed.includes("youtu.be/")) {
-    embed = embed.replace("youtu.be/", "www.youtube.com/embed/");
-}
-
-levelVideo.src = embed;
-
-}
-
-
-
-function renderList(levels){
-
-    levelList.innerHTML = "";
-
-    levels.forEach(level=>{
-
-        const card = document.createElement("div");
-
-        card.className = "level-button";
-
-        card.innerHTML = `
-
-            <img src="${level.thumbnail}">
-
-            <div>
-
-                <h3>#${level.rank}</h3>
-
-                <p>${level.name}</p>
-
+        </div>
+        <div class="video-tabs">
+            <div class="active">Verification</div>
+        </div>
+        <div class="video">
+            <iframe id="video" src="" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="stats-row">
+            <div class="stat">
+                <label>ID</label>
+                <value id="level-id">—</value>
             </div>
+        </div>
+    </main>
+    <!-- RIGHT -->
+    <aside class="right">
+        <div class="info-box">
+            Welcome to The Bad List.
+            Click any level on the left to display its information.
+        </div>
+        <h2>Information</h2>
+        <ul style="list-style: disc; padding-left: 20px; margin-bottom: 16px;">
+            <li>Levels: <span id="level-count">0</span></li>
+            <li>Difficulty: Extreme Demon</li>
+            <li>Version: 1.0</li>
+        </ul>
+        <hr>
+        <h2>Credits</h2>
+        <p class="credits">
+            Owner: Loggie<br>
+            Website by Loggie
+        </p>
+        <a class="req" href="#">Submission Requirements</a>
+    </aside>
+</div>
+<script type="module">
+import { demons } from "./levels.js";
 
-        `;
+const listEl = document.getElementById('level-list');
+const searchEl = document.getElementById('search');
+const levelCountEl = document.getElementById('level-count');
 
-        card.onclick = ()=>{
+levelCountEl.textContent = demons.length;
 
-            document
-                .querySelectorAll(".level-button")
-                .forEach(x=>x.classList.remove("active"));
+function youtubeEmbed(url) {
+    if (!url) return "";
+    const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/);
+    if (match) return `https://www.youtube.com/embed/${match[1]}`;
+    return url;
+}
 
-            card.classList.add("active");
-
-            showLevel(level);
-
-        };
-
-        levelList.appendChild(card);
-
+function renderList(filter = '') {
+    listEl.innerHTML = '';
+    const q = filter.toLowerCase();
+    demons.forEach((lvl) => {
+        if (q && !lvl.name.toLowerCase().includes(q)) return;
+        const btn = document.createElement('button');
+        btn.className = 'level';
+        btn.dataset.rank = lvl.rank;
+        btn.innerHTML = `<span class="rank">#${lvl.rank}</span><span class="level-name">${lvl.name}</span>`;
+        btn.onclick = () => selectLevel(lvl, btn);
+        listEl.appendChild(btn);
     });
+}
 
-    if(levels.length>0){
+function selectLevel(lvl, btn) {
+    document.querySelectorAll('.level').forEach(el => el.classList.remove('active'));
+    if (btn) btn.classList.add('active');
 
-        levelList.firstElementChild.classList.add("active");
+    document.getElementById('title').textContent = lvl.name;
+    document.getElementById('creator').textContent = lvl.creator || "—";
+    document.getElementById('verifier').textContent = lvl.verifier || "—";
+    document.getElementById('difficulty').textContent = lvl.difficulty || "—";
+    document.getElementById('level-id').textContent = lvl.id || "—";
 
-        showLevel(levels[0]);
-
+    const thumb = document.getElementById('thumbnail');
+    if (lvl.thumbnail) {
+        thumb.src = lvl.thumbnail;
+        thumb.style.display = 'block';
+        thumb.onerror = () => { thumb.style.display = 'none'; };
+    } else {
+        thumb.style.display = 'none';
+        thumb.src = '';
     }
 
+    const iframe = document.getElementById('video');
+    iframe.src = youtubeEmbed(lvl.link);
 }
 
+searchEl.addEventListener('input', e => renderList(e.target.value));
 
-
-search.addEventListener("input",()=>{
-
-    const text = search.value.toLowerCase();
-
-    const filtered = demons.filter(level=>
-
-        level.name.toLowerCase().includes(text) ||
-
-        level.creator.toLowerCase().includes(text) ||
-
-        level.verifier.toLowerCase().includes(text) ||
-
-        level.id.includes(text)
-
-    );
-
-    renderList(filtered);
-
-});
-
-
-
-renderList(demons);
+// Init – select first level
+renderList();
+if (demons.length > 0) {
+    const firstBtn = document.querySelector('.level');
+    selectLevel(demons[0], firstBtn);
+}
+</script>
+</body>
+</html>
