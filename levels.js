@@ -6,6 +6,16 @@ export const demons = [
         verifier: "Loggie",
         id: "146274666",
         difficulty: "Extreme Demon",
-        thumbnail: "images/griefer.png"
+        thumbnail: "images/grief.png"
+    },
+
+    {
+        rank: 2,
+        name: "Bad Amethyst",
+        creator: "Loggie",
+        verifier: "Open Verification",
+        id: "146274666",
+        difficulty: "Extreme Demon",
+        thumbnail: "images/amethyst.png"
     }
 ];
