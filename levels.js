@@ -7,7 +7,7 @@ export const demons = [
         id: "146274666",
         difficulty: "Extreme Demon",
         thumbnail: "images/grief.png",
-        link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        link: "https://www.youtube.com/watch?v=4LsdjyJHkEI",
         isLegacy: false
     },
     {
