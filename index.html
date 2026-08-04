@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Extreme Demon List</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+
+        body {
+            margin: 0;
+            background: #0b0f14;
+            color: white;
+        }
+
+
+        header {
+            background: #151b22;
+            padding: 25px;
+            text-align: center;
+        }
+
+
+        h1 {
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+
+        input {
+            width: 80%;
+            max-width: 500px;
+
+            padding: 12px;
+
+            border-radius: 8px;
+            border: none;
+
+            background: #222;
+            color: white;
+
+            font-size: 16px;
+        }
+
+
+
+        #list {
+
+            max-width: 1000px;
+
+            margin: 30px auto;
+
+            padding: 0 15px;
+
+        }
+
+
+
+        .level {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+
+            background: #161b22;
+
+            padding: 15px;
+
+            margin-bottom: 15px;
+
+
+            border-radius: 12px;
+
+
+            transition: .2s;
+
+        }
+
+
+
+        .level:hover {
+
+            transform: scale(1.02);
+
+            background: #202830;
+
+        }
+
+
+
+        .thumbnail {
+
+            width: 180px;
+
+            height: 100px;
+
+
+            object-fit: cover;
+
+
+            border-radius: 8px;
+
+        }
+
+
+
+        .info {
+
+            flex: 1;
+
+        }
+
+
+
+        .info h2 {
+
+            margin: 0;
+
+            font-size: 25px;
+
+        }
+
+
+
+        .rank {
+
+            color: #ffd700;
+
+            font-weight: bold;
+
+        }
+
+
+
+        .info p {
+
+            color: #aaa;
+
+            margin: 6px 0;
+
+        }
+
+
+
+        .difficulty {
+
+            color: #ff4444 !important;
+
+            font-weight: bold;
+
+        }
+
+
+
+        @media(max-width:600px) {
+
+            .level {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
+
+            .thumbnail {
+
+                width: 100%;
+
+                height: auto;
+
+            }
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>Extreme Demon List</h1>
+
+
+    <input 
+        id="search"
+        placeholder="Search demons..."
+    >
+
+</header>
+
+
+
+<main id="list"></main>
+
+
+
+
+<script type="module">
+
+
+import { demons } from "./levels.js";
+
+
+
+const list = document.getElementById("list");
+
+const search = document.getElementById("search");
+
+
+
+
+
+function renderLevels(levels) {
+
+
+    list.innerHTML = levels.map(level => {
+
+
+        const thumbnail =
+        `images/${level.name.toLowerCase()}.png`;
+
+
+
+        return `
+
+        <div class="level">
+
+
+            <img
+                class="thumbnail"
+                src="${thumbnail}"
+                alt="${level.name}"
+                onerror="this.src='images/default.png'"
+            >
+
+
+
+            <div class="info">
+
+
+                <h2>
+
+                    <span class="rank">
+                    #${level.rank}
+                    </span>
+
+                    ${level.name}
+
+                </h2>
+
+
+
+                <p>
+                    Creator: ${level.creator}
+                </p>
+
+
+
+                <p>
+                    Verifier: ${level.verifier}
+                </p>
+
+
+
+                <p class="difficulty">
+                    ${level.difficulty}
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+        `;
+
+
+    }).join("");
+
+}
+
+
+
+
+
+search.addEventListener("input", () => {
+
+
+    const text = search.value.toLowerCase();
+
+
+
+    const filtered = demons.filter(level => {
+
+
+        return (
+
+            level.name.toLowerCase().includes(text) ||
+
+            level.creator.toLowerCase().includes(text) ||
+
+            level.verifier.toLowerCase().includes(text)
+
+        );
+
+
+    });
+
+
+
+    renderLevels(filtered);
+
+
+});
+
+
+
+
+
+renderLevels(demons);
+
+
+
+</script>
+
+
+
+</body>
+</html>
