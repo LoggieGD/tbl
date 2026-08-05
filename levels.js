@@ -16,7 +16,7 @@ export const demons = [
         name: "Bad Amethyst",
         creator: "Idk",
         verifier: "Open Verification",
-        id: "146282774",
+        id: "146348764",
         difficulty: "Extreme Demon",
         thumbnail: "images/amethyst.png",
         link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
