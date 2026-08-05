@@ -1,10 +1,10 @@
 export const demons = [
     {
-        rank: 1,
+        rank: 2,
         name: "Bad Grief",
         creator: "Loggie",
         verifier: "Loggie",
-        id: "146274666",
+        id: "Currently Not Available",
         difficulty: "Extreme Demon",
         thumbnail: "images/grief.png",
         link: "https://www.youtube.com/watch?v=4LsdjyJHkEI",
@@ -12,16 +12,16 @@ export const demons = [
         isLegacy: false
     },
     {
-        rank: 2,
+        rank: 1,
         name: "Bad Amethyst",
         creator: "Idk",
-        verifier: "Open Verification",
+        verifier: "Loggie",
         id: "146348764",
         difficulty: "Extreme Demon",
         thumbnail: "images/amethyst.png",
-        link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-        victors: "Not Verified.",
-        isLegacy: true
+        link: "https://youtu.be/xT2kGu3gn2M",
+        victors: "None, You Could Be The First.",
+        isLegacy: false
     },
     {
         rank: 3,
